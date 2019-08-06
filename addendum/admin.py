@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf import settings
 
-from .forms import TranslationForm
+from .forms import TranslationForm, SnippetForm
 from .models import Snippet, SnippetTranslation
 
 
@@ -14,6 +14,7 @@ class TranslationAdmin(admin.TabularInline):
 class SnippetAdmin(admin.ModelAdmin):
     list_display = ("key", "text")
     inlines = [TranslationAdmin]
+    form = SnippetForm
 
     def __init__(self, *args, **kwargs):
         """
